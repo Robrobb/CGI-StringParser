@@ -3,38 +3,45 @@ package com.example.demo.Compute;
 import java.util.*;
 
 public class Parser {
-    public List<String> parse(String text) {
 
+
+    public List<String> getWordCount(String text){
+        String[] wordArray=getWordArray(text);
+        Map<String,Integer> wordMap=countWords(wordArray);
+        List<Map.Entry<String,Integer>> linkedList=getSortedLinkedList(wordMap);
+        return finalFormat(linkedList);
+    }
+    public String[] getWordArray(String text){
+        return text.trim().split("[\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
+    }
+
+    public Map<String,Integer> countWords(String[] wordArray){
         Map<String, Integer> wordMap = new HashMap<>();
 
-        String[] wordarray;
+        for (String word : wordArray) {
 
-        List<String> finalArrayOutPut = new ArrayList<>();
-        //for sizing list
-        int resizer = 0;
-        //for counting doubles
-        int counter = 1;
+            word=word.toLowerCase();
+            if (wordMap.get(word.toLowerCase()) == null) {
 
-        wordarray = text.split("[\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
-
-        Arrays.sort(wordarray);
-
-        for (String word : wordarray) {
-            String tmpWord = word;
-            tmpWord = tmpWord.toLowerCase();
-            if (wordMap.get(word) == null && word.toLowerCase().equals(tmpWord)) {
-                counter = 1;
-                wordMap.put(word, counter);
+                wordMap.put(word, 1);
             } else {
-                counter++;
-                wordMap.replace(word, counter);
+               int counter=wordMap.get(word);
+                wordMap.replace(word,counter+1);
             }
         }
-        //hashmap to linked list for easier sorting
+        return wordMap;
+    }
+
+    public List<Map.Entry<String,Integer>> getSortedLinkedList(Map<String,Integer> wordMap) {
         List<Map.Entry<String, Integer>> list = new LinkedList<>(wordMap.entrySet());
         list.sort(Map.Entry.comparingByValue());
         Collections.reverse(list);
-        //linked list to simple string array for easier output and correct size
+        return list;
+    }
+
+    public List<String> finalFormat(List<Map.Entry<String,Integer>> list) {
+        int resizer=0;
+        List<String> finalArrayOutPut = new ArrayList<>();
         for (Map.Entry tmpList : list) {
             resizer++;
             if (resizer < 11) {
@@ -43,4 +50,7 @@ public class Parser {
         }
         return finalArrayOutPut;
     }
+
+
 }
+

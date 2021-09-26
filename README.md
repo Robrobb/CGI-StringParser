@@ -11,7 +11,7 @@ Endpointen för att dela upp en text är http://localhost:8081/parser och har te
 
 
 1.Klona repot via länken "https://github.com/Robrobb/CGI-StringParser.git"
-2.Öppna client folder `cd client` och starta klienten med `npm run start`
+2.Öppna client folder `cd client` och starta klienten med `npm install` och `npm run start`
 3.Öppna server folder, bygg projectet med `maven clean install` och gå in i target mappen och skriv sedan `java -jar -StringParser-1.0.jar`
 4.Då kan du öppna webbklienten på http://localhost:3000 och testa programmet
 
