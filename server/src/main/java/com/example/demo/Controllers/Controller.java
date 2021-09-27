@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,13 +18,12 @@ import java.util.List;
 public class Controller {
 
     @RequestMapping ("/parser")
-    public ResponseEntity<List> addInfo(@Validated @RequestBody Dto dto) throws IOException {
+    public ResponseEntity<List> addInfo(@Valid @RequestBody Dto dto) throws IOException {
         Parser parser = new Parser();
         try {
             return new ResponseEntity<>(parser.getWordCount(dto.getText()),HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println(e);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
 

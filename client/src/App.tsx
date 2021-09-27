@@ -16,7 +16,6 @@ function App(this: any) {
     setUserText(event.target.value as string)
   }
   const handlePost = () => {
-    console.log(userText)
     axios('http://localhost:8081/parser', {
       method: 'POST',
       data: {

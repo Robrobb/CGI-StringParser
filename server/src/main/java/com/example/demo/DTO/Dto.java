@@ -1,9 +1,13 @@
 package com.example.demo.DTO;
 
 
-public class Dto {
+import javax.validation.constraints.NotBlank;
 
+public class Dto {
+    @NotBlank
     String text;
+
+
     Dto(){}
 
     public String getText() {

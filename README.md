@@ -1,20 +1,43 @@
- __      __                .____________                      __                
-/  \    /  \___________  __| _/\_   ___ \  ____  __ __  _____/  |_  ___________ 
-\   \/\/   /  _ \_  __ \/ __ | /    \  \/ /  _ \|  |  \/    \   __\/ __ \_  __ \
- \        (  <_> )  | \/ /_/ | \     \___(  <_> )  |  /   |  \  | \  ___/|  | \/
-  \__/\  / \____/|__|  \____ |  \______  /\____/|____/|___|  /__|  \___  >__|   
-       \/                   \/         \/                  \/          \/       
 
-Webbklienten är byggd i Visualstudio code med React,Backenden är byggd i java spring med intelliJ
-webbklienten ska öppnas i port 3000, java använder port 8081, om webbklienten använder annan port kan den blockeras av CORS i java klienten
-Endpointen för att dela upp en text är http://localhost:8081/parser och har testats i Postman och i webbklienten
+# Robin Hemmingsson hemtest CGI
+```
+🆆🅾🆁🅳🅲🅾🆄🅽🆃🅴🆁
+```
 
 
-1.Klona repot via länken "https://github.com/Robrobb/CGI-StringParser.git"
+### Beskrivning
+För att underlätta genomgång av hemtestet så har jag gjort en monorepo med foldrarna client och server. Foldern server innehåller APIet som specificerat i hemtestet. I foldern client har jag även gjort en enklare webbklient som fungerar med APIet.
+
+#### Klient
+React, TypeScript & Bootstrap
+
+#### Server
+Java 8
+Java Spring
+
+### Användings Instruktioner
+1.Klona repot `git clone https://github.com/Robrobb/CGI-StringParser.git`
 2.Öppna client folder `cd client` och starta klienten med `npm install` och `npm run start`
-3.Öppna server folder, bygg projectet med `maven clean install` och gå in i target mappen och skriv sedan `java -jar -StringParser-1.0.jar`
-4.Då kan du öppna webbklienten på http://localhost:3000 och testa programmet
+3.Öppna server folder, bygg projectet med `mvn clean install` och gå in i target mappen och skriv sedan `java -jar StringParser-1.0.jar` för att köra servern
+4.Sen kan du öppna webbklienten på http://localhost:3000 och testa programmet
 
+## Postmantest
 
+kollar om anropet är ok och att det finns med en body
+
+`
+pm.test("standardtest", function () {
+    pm.response.to.be.ok;
+    pm.response.to.be.json; 
+});
+`
+
+Kollar om anropet är en bad request
+
+`
+pm.test("response 400", function () {
+    pm.response.to.have.status(400);
+});
+`
 
 

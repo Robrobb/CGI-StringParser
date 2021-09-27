@@ -1,5 +1,7 @@
 package com.example.demo.Compute;
 
+import org.springframework.util.StringUtils;
+
 import java.util.*;
 
 public class Parser {
@@ -12,22 +14,22 @@ public class Parser {
         return finalFormat(linkedList);
     }
     public String[] getWordArray(String text){
-        return text.trim().split("[\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
+        return text.trim().split("[\\;\\:\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
     }
 
     public Map<String,Integer> countWords(String[] wordArray){
         Map<String, Integer> wordMap = new HashMap<>();
 
         for (String word : wordArray) {
-
-            word=word.toLowerCase();
-            if (wordMap.get(word.toLowerCase()) == null) {
-
+            if(!word.equals("")){
+                 word=word.toLowerCase();
+                word=word.substring(0, 1).toUpperCase() + word.substring(1);
+            if (wordMap.get(word) == null) {
                 wordMap.put(word, 1);
             } else {
                int counter=wordMap.get(word);
                 wordMap.replace(word,counter+1);
-            }
+            }}
         }
         return wordMap;
     }
