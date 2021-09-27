@@ -25,9 +25,9 @@ install` och `npm run start`
 
 4.Sen kan du öppna webbklienten på http://localhost:3000 och testa programmet
 
-## Postmantest
+## Postman
 
-Det följer också med en Postman collection som innehåller tester som kan köras i Postman
+Det följer också med en Postman collection i CGI mappen,som innehåller tester som kan köras i Postman
 `
 
 
