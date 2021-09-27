@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,9 +20,10 @@ public class Controller {
 
     @RequestMapping ("/parser")
     public ResponseEntity<List> addInfo(@Valid @RequestBody Dto dto) throws IOException {
-        Parser parser = new Parser();
         try {
-            return new ResponseEntity<>(parser.getWordCount(dto.getText()),HttpStatus.OK);
+            Parser parser = new Parser();
+            List<String> parsedList = parser.getWordCount(dto.getText());
+            return new ResponseEntity<>(parsedList,HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

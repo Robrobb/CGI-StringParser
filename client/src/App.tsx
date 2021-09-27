@@ -30,10 +30,10 @@ function App(this: any) {
     }).catch((error) => {
       //https://github.com/axios/axios#handling-errors länk till axios fel hantering
       if (error.response) {
-        if (error.response.status == 500) {
+        if (error.response.status === 500) {
           handleError("Server fel")
         }
-        if (error.response.status == 400) {
+        if (error.response.status === 400) {
           handleError("Inputfel")
         }} else if (error.request) {
         handleError("Får inget svar från servern")
