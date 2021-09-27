@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "b9bb0bfa-025c-419c-8480-f1f37edcd020",
+		"name": "Hemtest Cgi Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "input number",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":324234\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parser"
+					]
+				},
+				"description": "Should return an empty list"
+			},
+			"response": []
+		},
+		{
+			"name": "Send no body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parser"
+					]
+				},
+				"description": "should return bad request 400"
+			},
+			"response": []
+		},
+		{
+			"name": "Standard input",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\"test, sdfs, sdfsdf, test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parser"
+					]
+				},
+				"description": "should return a divided list of words"
+			},
+			"response": []
+		},
+		{
+			"name": "Send body with empty string",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\":\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Send corrupt body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asdasd\":asd\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/parser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"parser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

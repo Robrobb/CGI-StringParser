@@ -27,21 +27,7 @@ install` och `npm run start`
 
 ## Postmantest
 
-kollar om anropet är ok och att det finns med en body
-
-`
-pm.test("standardtest", function () {
-    pm.response.to.be.ok;
-    pm.response.to.be.json; 
-});
-`
-
-Kollar om anropet är en bad request
-
-`
-pm.test("response 400", function () {
-    pm.response.to.have.status(400);
-});
+Det följer också med en Postman collection som innehåller tester som kan köras i Postman
 `
 
 

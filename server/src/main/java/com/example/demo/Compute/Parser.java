@@ -14,7 +14,7 @@ public class Parser {
         return finalFormat(linkedList);
     }
     public String[] getWordArray(String text){
-        return text.trim().split("[\\;\\:\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
+        return text.trim().split("[0-9\\;\\:\\n\\s\\-\\.\\'\\?\\,\\_\\@()]+");
     }
 
     public Map<String,Integer> countWords(String[] wordArray){
